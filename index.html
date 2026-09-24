@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tube Loader</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark">▶</span>
+          <span>Tube Loader</span>
+        </div>
+      </header>
+
+      <main class="app-card">
+        <section class="hero">
+          <p class="eyebrow">Load any YouTube video</p>
+          <h1>Paste a YouTube link and watch it instantly.</h1>
+          <p class="subtitle">
+            Works with standard watch links, Shorts links, and youtu.be URLs.
+          </p>
+        </section>
+
+        <form id="video-form" class="video-form" novalidate>
+          <label class="sr-only" for="youtube-url">YouTube URL</label>
+          <div class="input-row">
+            <input
+              id="youtube-url"
+              name="youtube-url"
+              type="url"
+              placeholder="https://www.youtube.com/watch?v=..."
+              autocomplete="off"
+            />
+            <button type="submit">Load video</button>
+          </div>
+          <p id="error-message" class="error-message" aria-live="polite"></p>
+        </form>
+
+        <section class="player-panel">
+          <div id="player-wrapper" class="player-wrapper hidden">
+            <iframe
+              id="video-frame"
+              title="YouTube video player"
+              src=""
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div id="empty-state" class="empty-state">
+            <div class="empty-icon">🎬</div>
+            <p>No video loaded yet.</p>
+            <span>Use the form above to open a video by URL.</span>
+          </div>
+        </section>
+
+        <section class="history-panel">
+          <h2>Recent links</h2>
+          <ul id="history-list" class="history-list"></ul>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
