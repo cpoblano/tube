@@ -107,7 +107,8 @@ body {
 }
 
 .input-row,
-.search-row {
+.search-row,
+.api-key-row {
   display: flex;
   gap: 12px;
   align-items: center;
@@ -118,7 +119,8 @@ body {
 }
 
 .input-row input,
-.search-row input {
+.search-row input,
+.api-key-row input {
   flex: 1;
   background: transparent;
   border: none;
@@ -129,12 +131,14 @@ body {
 }
 
 .input-row input::placeholder,
-.search-row input::placeholder {
+.search-row input::placeholder,
+.api-key-row input::placeholder {
   color: #7e8aa5;
 }
 
 .input-row button,
-.search-row button {
+.search-row button,
+.api-key-row button {
   border: none;
   border-radius: 12px;
   color: white;
@@ -156,7 +160,8 @@ body {
 }
 
 .input-row button:hover,
-.search-row button:hover {
+.search-row button:hover,
+.api-key-row button:hover {
   transform: translateY(-1px);
 }
 
@@ -207,6 +212,71 @@ body {
   font-size: 1.2rem;
   color: var(--text);
   font-weight: 600;
+}
+
+.results-panel {
+  margin-top: 24px;
+  background: rgba(10, 15, 28, 0.56);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 18px;
+}
+
+.results-panel h2 {
+  margin: 0 0 14px;
+  font-size: 1.08rem;
+}
+
+.search-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.result-card {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.result-card img {
+  display: block;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.result-details {
+  padding: 12px;
+}
+
+.result-details h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.result-details p {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.result-button {
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--primary), #ff5d81);
+  color: white;
+  font: inherit;
+  font-weight: 700;
+  padding: 10px 12px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.no-results {
+  color: var(--muted);
 }
 
 .history-panel {
@@ -267,14 +337,16 @@ body {
   }
 
   .input-row,
-  .search-row {
+  .search-row,
+  .api-key-row {
     flex-direction: column;
     align-items: stretch;
     padding: 12px;
   }
 
   .input-row button,
-  .search-row button {
+  .search-row button,
+  .api-key-row button {
     width: 100%;
   }
 }

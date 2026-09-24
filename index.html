@@ -23,7 +23,7 @@
           <p class="eyebrow">Search or paste a link</p>
           <h1>Load YouTube videos by search or URL.</h1>
           <p class="subtitle">
-            Paste a direct link or search by topic to load YouTube content instantly.
+            Search for specific videos and click a result to load it, or paste a direct link.
           </p>
         </section>
 
@@ -57,6 +57,17 @@
           <p id="search-error" class="error-message" aria-live="polite"></p>
         </form>
 
+        <div class="api-key-row">
+          <label class="sr-only" for="api-key">YouTube Data API Key</label>
+          <input
+            id="api-key"
+            type="password"
+            placeholder="YouTube Data API key (saved locally in your browser)"
+            autocomplete="off"
+          />
+          <button type="button" id="save-key-btn" class="secondary-btn">Save key</button>
+        </div>
+
         <section class="player-panel">
           <div id="player-wrapper" class="player-wrapper hidden">
             <iframe
@@ -73,6 +84,11 @@
             <p>No video loaded yet.</p>
             <span>Use the form above to paste a video URL or search for a topic.</span>
           </div>
+        </section>
+
+        <section id="results-panel" class="results-panel hidden">
+          <h2>Search results</h2>
+          <div id="search-results" class="search-results"></div>
         </section>
 
         <section class="history-panel">
