@@ -101,11 +101,13 @@ body {
   font-size: 1.02rem;
 }
 
-.video-form {
-  margin-bottom: 28px;
+.video-form,
+.search-form {
+  margin-bottom: 18px;
 }
 
-.input-row {
+.input-row,
+.search-row {
   display: flex;
   gap: 12px;
   align-items: center;
@@ -115,7 +117,8 @@ body {
   padding: 10px 12px 10px 16px;
 }
 
-.input-row input {
+.input-row input,
+.search-row input {
   flex: 1;
   background: transparent;
   border: none;
@@ -125,24 +128,35 @@ body {
   font-size: 1rem;
 }
 
-.input-row input::placeholder {
+.input-row input::placeholder,
+.search-row input::placeholder {
   color: #7e8aa5;
 }
 
-.input-row button {
+.input-row button,
+.search-row button {
   border: none;
   border-radius: 12px;
-  background: linear-gradient(135deg, var(--primary), #ff5d81);
   color: white;
   font: inherit;
   font-weight: 700;
   padding: 14px 20px;
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.input-row button {
+  background: linear-gradient(135deg, var(--primary), #ff5d81);
   box-shadow: 0 12px 25px rgba(255, 45, 85, 0.28);
 }
 
-.input-row button:hover {
+.secondary-btn {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  box-shadow: 0 12px 25px rgba(59, 130, 246, 0.25);
+}
+
+.input-row button:hover,
+.search-row button:hover {
   transform: translateY(-1px);
 }
 
@@ -252,13 +266,15 @@ body {
     padding: 22px 18px;
   }
 
-  .input-row {
+  .input-row,
+  .search-row {
     flex-direction: column;
     align-items: stretch;
     padding: 12px;
   }
 
-  .input-row button {
+  .input-row button,
+  .search-row button {
     width: 100%;
   }
 }

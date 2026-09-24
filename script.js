@@ -1,6 +1,9 @@
 const form = document.getElementById('video-form');
 const input = document.getElementById('youtube-url');
 const errorMessage = document.getElementById('error-message');
+const searchForm = document.getElementById('search-form');
+const searchInput = document.getElementById('search-query');
+const searchError = document.getElementById('search-error');
 const playerWrapper = document.getElementById('player-wrapper');
 const emptyState = document.getElementById('empty-state');
 const videoFrame = document.getElementById('video-frame');
@@ -42,11 +45,29 @@ function clearError() {
   errorMessage.textContent = '';
 }
 
+function showSearchError(message) {
+  searchError.textContent = message;
+}
+
+function clearSearchError() {
+  searchError.textContent = '';
+}
+
 function loadVideo(videoId) {
-  videoFrame.src = `https://www.youtube.com/embed/${encodeURIComponent(videoId)}?rel=0`;
+  videoFrame.src = `https://www.youtube.com/embed/${encodeURIComponent(videoId)}?autoplay=1&rel=0`;
   playerWrapper.classList.remove('hidden');
   emptyState.classList.add('hidden');
   clearError();
+  clearSearchError();
+}
+
+function loadSearchResults(query) {
+  const encoded = encodeURIComponent(query.trim());
+  videoFrame.src = `https://www.youtube.com/embed?listType=search&list=${encoded}&autoplay=1`;
+  playerWrapper.classList.remove('hidden');
+  emptyState.classList.add('hidden');
+  clearError();
+  clearSearchError();
 }
 
 function readHistory() {
@@ -82,8 +103,9 @@ function renderHistory() {
 
   historyList.querySelectorAll('[data-url]').forEach((button) => {
     button.addEventListener('click', () => {
-      input.value = button.dataset.url;
-      handleVideoLoad(button.dataset.url);
+      const value = button.dataset.url;
+      input.value = value;
+      handleVideoLoad(value);
     });
   });
 }
@@ -105,9 +127,24 @@ function handleVideoLoad(value) {
   saveToHistory(url);
 }
 
+function handleVideoSearch(value) {
+  const query = value.trim();
+  if (!query) {
+    showSearchError('Please enter a search term.');
+    return;
+  }
+
+  loadSearchResults(query);
+}
+
 form.addEventListener('submit', (event) => {
   event.preventDefault();
   handleVideoLoad(input.value);
+});
+
+searchForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  handleVideoSearch(searchInput.value);
 });
 
 renderHistory();
